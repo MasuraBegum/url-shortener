@@ -1,6 +1,5 @@
-package com.projects.url_shortener;
+package com.projects.urlShortener;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
