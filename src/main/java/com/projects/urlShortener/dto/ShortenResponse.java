@@ -37,4 +37,23 @@ public class ShortenResponse {
             return new ShortenResponse(this);
         }
     }
+
+    public String getShortUrl() {
+        return shortUrl;
+    }
+    public void setShortUrl(String shortUrl) {
+        this.shortUrl = shortUrl;
+    }
+    public String getOriginalUrl() {
+        return originalUrl;
+    }
+    public void setOriginalUrl(String originalUrl) {
+        this.originalUrl = originalUrl;
+    }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }
