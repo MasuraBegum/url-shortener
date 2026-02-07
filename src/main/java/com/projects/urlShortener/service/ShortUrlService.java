@@ -19,6 +19,15 @@ public class ShortUrlService {
     }
 
     public ShortenResponse shortenUrl(ShortenRequest request) {
+
+        ShortUrl existing = repository.findByOriginalUrl(request.getOriginalUrl());
+        if (existing != null) {
+            return new ShortenResponse.Builder()
+                    .shortUrl(BASE_URL + existing.getShortCode())
+                    .originalUrl(existing.getOriginalUrl())
+                    .createdAt(existing.getCreatedAt())
+                    .build();
+        }
         ShortUrl entity =
                 new ShortUrl.Builder()
                         .originalUrl(request.getOriginalUrl())
