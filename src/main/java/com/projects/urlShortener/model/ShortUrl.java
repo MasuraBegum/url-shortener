@@ -20,11 +20,7 @@ import java.time.LocalDateTime;
         indexes = {
                 @Index(name = "idx_short_code", columnList = "shortCode")
         })
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+
 public class ShortUrl {
 
     @Id
@@ -42,5 +38,85 @@ public class ShortUrl {
     private LocalDateTime expiryDate;
 
     private Long clickCount = 0L;
+
+    private ShortUrl(Builder builder) {
+        this.shortCode = builder.shortCode;
+        this.originalUrl = builder.originalUrl;
+        this.createdAt = builder.createdAt;
+        this.expiryDate = builder.expiryDate;
+    }
+
+    public static class Builder {
+        private String shortCode;
+        private String originalUrl;
+        private LocalDateTime createdAt;
+        private LocalDateTime expiryDate;
+
+        public Builder shortCode(String shortCode) {
+            this.shortCode = shortCode;
+            return this;
+        }
+
+        public Builder originalUrl(String originalUrl) {
+            this.originalUrl = originalUrl;
+            return this;
+        }
+
+        public Builder createdAt(LocalDateTime createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder expiryDate(LocalDateTime expiryDate) {
+            this.expiryDate = expiryDate;
+            return this;
+        }
+
+        public ShortUrl build() {
+            return new ShortUrl(this);
+        }
+    }
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getShortCode() {
+        return shortCode;
+    }
+    public void setShortCode(String shortCode) {
+        this.shortCode = shortCode;
+    }
+
+    public String getOriginalUrl() {
+        return originalUrl;
+    }
+    public void setOriginalUrl(String originalUrl) {
+        this.originalUrl = originalUrl;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getExpiryDate() {
+        return expiryDate;
+    }
+    public void setExpiryDate(LocalDateTime expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public Long getClickCount() {
+        return clickCount;
+    }
+    public void setClickCount(Long clickCount) {
+        this.clickCount = clickCount;
+    }
 }
 
