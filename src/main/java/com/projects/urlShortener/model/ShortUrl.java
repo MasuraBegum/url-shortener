@@ -20,7 +20,7 @@ public class ShortUrl {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String shortCode;
 
     @Column(nullable = false, columnDefinition = "TEXT")
@@ -31,6 +31,8 @@ public class ShortUrl {
     private LocalDateTime expiryDate;
 
     private Long clickCount = 0L;
+
+    protected ShortUrl() {}
 
     private ShortUrl(Builder builder) {
         this.shortCode = builder.shortCode;
